@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SIT 725 Prac 1</title>
+  <meta name="description" content="basic template for SIT 725 Prac 1">
+  <meta name="author" content="SitePoint">
+  <meta property="og:title" content="SIT 725 Prac 1">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="basic template for SIT 725 Prac 1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div class="container center-align">
+    <div class="row">
+      <div class="col s12">
+        <h1 class="exciting-heading" id="pulsatingHeading">SIT 725</h1>
+        <h2 id="heading" class="center-align">Aidan Debernardi</h2>
+        <p class="center-align">Software and Services Developer</p>
+      </div>
+      <div class="col s12 center-align">
+        <input type="number" id="num1" class="centered-input" placeholder="Enter the first number">
+        <input type="number" id="num2" class="centered-input" placeholder="Enter the second number">
+        <a class="waves-effect waves-light btn pulse" onclick="performCalculation()">Add Numbers</a>
+        <p id="result" class="center-align"></p>
+        <div class="interactive-figure" id="movingO"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  <script>
+    function performCalculation() {
+      const num1 = parseFloat(document.getElementById("num1").value);
+      const num2 = parseFloat(document.getElementById("num2").value);
+      const result = num1 + num2;
+      document.getElementById("result").innerHTML = `Result: ${result}`;
+    }
+
+    const movingO = document.getElementById("movingO");
+    let currentPosition = 0;
+    const maxPosition = 800; // Maximum allowed position
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "ArrowLeft" && currentPosition > 0) {
+        currentPosition -= 10;
+        movingO.style.left = currentPosition + "px";
+      } else if (event.key === "ArrowRight" && currentPosition < maxPosition - 10) {
+        currentPosition += 10;
+        movingO.style.left = currentPosition + "px";
+      }
+    });
+  </script>
+</body>
+</html>
